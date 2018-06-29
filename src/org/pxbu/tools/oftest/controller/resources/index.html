@@ -1,0 +1,151 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="third-party/jquery-3.3.1.min.js"></script>
+<script src="third-party/popper.min.js"></script>
+<script src="third-party/datatables.min.js"></script>
+<link rel="stylesheet"
+	href="third-party/bootsrap-4.4.1/css/bootstrap.min.css">
+<script src="third-party/bootsrap-4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<button id='reloadButton' type="button" class="btn btn-primary">Refresh</button>
+	<button id='clearButton' type="button" class="btn btn-primary">Clear</button>
+	<button id='pauseResumeButton' type="button" class="btn btn-primary">Pause</button>
+	<button id='statsButton' type="button" class="btn btn-primary">Record Stats</button>
+		
+	<div id='result'
+		class="alert alert-warning alert-dismissible fade show"></div>
+		
+				<h5>
+					<span id='agents' class="badge badge-pill badge-success"> </span> Agents
+					
+					<span id='listenerSuccess' class="badge badge-pill badge-success"></span> Listening
+					
+					<span id='listenerFailed' class="badge badge-pill badge-danger"></span> Listener Failed
+
+					<span id='ack' class="badge badge-pill badge-success"></span> Acknowledged
+					
+					<span id='unack' class="badge badge-pill badge-info"></span> UnAcknowledged
+					
+				</h5>
+				
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#unackListCollapse" aria-expanded="false">
+	List Events Not Received
+  </button>
+
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="collapseExample">
+    Settings
+  </button>
+
+  <div class='collapse' id='unackListCollapse'>
+  </div>
+
+
+<div class="collapse" id="settings">
+	<table class="table">
+		<tr>
+			<td>
+				<form>
+					<div class="form-group row">
+						<label for="xmpp-host-input" class="col-sm-4 col-form-label">XMPP
+							host</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="xmpp-host-input">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="xmpp-domain-input" class="col-sm-4 col-form-label">XMPP
+							domain</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="xmpp-domain-input">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="connection-method" class="col-sm-4">Consumer Type</label>
+						<div class="dropdown col-sm-8 ">
+						  <button class="btn btn-secondary col-sm-8 dropdown-toggle" type="button" id="listenerTypeBtn" data-toggle="dropdown">
+						    Select
+						  </button>
+						  <div class="dropdown-menu" aria-labelledby="listenerTypeBtn">
+						    <a class="dropdown-item" href="#">BOSH</a>
+						    <a class="dropdown-item" href="#">XMPP</a>
+						  </div>
+						</div>
+					</div>
+				</form>
+			</td>
+			<td>
+				<form>
+					<div class="form-group row">
+						<label for="pu-name-input" class="col-sm-4 col-form-label">Publisher
+							User</label>
+						<div class="col-sm-8">
+							<input readonly type="text" class="form-control" id="pu-name-input">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="pu-pwd-input" class="col-sm-4 col-form-label">Publisher
+							Password</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="pu-pwd-input">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="publishrate" class="col-sm-4 col-form-label">Event Publish rate per Agent/Sec</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="publishrate">
+						</div>
+					</div>					
+					<div class="col-md-12 text-center">
+						<button id='saveConfig' type="button" class="btn btn-primary">Save Config</button>
+					</div>
+				</form>
+			</td>
+			<td>
+				<form>
+					<div class="form-group row">
+						<label for="pr-name-input" class="col-sm-4 col-form-label">Presence
+							User</label>
+						<div class="col-sm-8">
+							<input readonly type="text" class="form-control" id="pr-name-input">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="pr-pwd-input" class="col-sm-4 col-form-label">Presence
+							Password</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="pr-pwd-input">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="total-consumers" class="col-sm-4 col-form-label">Total Consumers</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="total-consumers">
+						</div>
+					</div>									
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+
+	<table id='tblStatus' class="table table-striped">
+		<thead>
+			<tr>
+				<th>Agent Id</th>
+				<th>Listener</th>
+				<th>Total Ack</th>
+				<th>Total UnAck</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+	<script src="app.js"></script>
+
+</body>
+</html>
+

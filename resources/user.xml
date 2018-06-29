@@ -1,0 +1,30 @@
+<Update>
+	<data>
+		<user>
+			<dialogs>/finesse/api/User/__USERID__/Dialogs</dialogs>
+			<extension>__EXTENSION__</extension>
+			<firstName>AGENT</firstName>
+			<lastName>__USERID__</lastName>
+			<loginId>__USERID__</loginId>
+			<loginName>__USERID__</loginName>
+			<mediaType>1</mediaType>
+			<pendingState></pendingState>
+			<reasonCodeId>-1</reasonCodeId>
+			<roles>
+				<role>Agent</role>
+			</roles>
+			<settings>
+				<wrapUpOnIncoming>OPTIONAL</wrapUpOnIncoming>
+			</settings>
+			<state>__STATE__</state>
+			<stateChangeTime>__TIME__</stateChangeTime>
+			<teamId>1</teamId>
+			<teamName>Default</teamName>
+			<uri>/finesse/api/User/__USERID__</uri>
+			<wrapUpTimer>30</wrapUpTimer>
+		</user>
+	</data>
+	<event>PUT</event>
+	<requestId>__REQUEST_ID__</requestId>
+	<source>/finesse/api/User/1002733</source>
+</Update>

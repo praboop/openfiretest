@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration debug="false"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- Pattern to output the caller's file name and line number -->
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p [%t] (%C) - %m%n" />
+		</layout>
+	</appender>
+	
+  <appender name="RESULTS" class="org.apache.log4j.RollingFileAppender"> 
+    <param name="append" value="false"/>
+    <param name="file" value="log/results.log"/>
+    <param name="maxFileSize" value="30MB"/>
+    <!-- Keep backup files -->
+    <param name="maxBackupIndex" value="3"/>
+    <layout class="org.apache.log4j.PatternLayout"> 
+      <param name="ConversionPattern" value="%d{ABSOLUTE} %5p [%t] (%C) - %m%n" />
+    </layout> 
+  </appender>
+
+	
+	<logger name="org.pxbu.tools.oftest">
+		<level value="INFO" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<root>
+		<level value="INFO"/>
+		<appender-ref ref="RESULTS" />
+	</root>
+</log4j:configuration>
